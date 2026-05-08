@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis:latest
+    restart: always
+    container_name: redis
+    volumes:
+      - /root/buye/docker/redis/:/data
+  clash:
+    image: metacubex/mihomo:latest
+    restart: always
+    container_name: clash
+    ports:
+      - 9191:9090 # clash WEB UI
+    volumes:
+      - /root/buye/docker/clash/:/root/.config/mihomo/
+  vod:
+    image: sifan1/vodspider:v8.2
+    container_name: vod
+    ports:
+      - 8160:3000
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      PROXY_HTTP: 
+      PROXY_SOCKS5:  
+    volumes:
+      - /root/buye/docker/vod/:/app
+    depends_on:
+      - redis
+      
