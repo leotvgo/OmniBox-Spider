@@ -119,7 +119,7 @@ class XHamsterSpider extends Spider {
       const videos = [];
 
       // 提取视频列表
-[2026/5/8 15:39] Leo openclaw qw: $('[data-role="video-thumb"], .video-thumb, [data-video-id]').each((i, el) => {
+      Leo openclaw qw: $('[data-role="video-thumb"], .video-thumb, [data-video-id]').each((i, el) => {
         const title = $(el).find('.video-title, h3, h4, [data-role="video-title"]').text().trim();
         const cover = $(el).find('img').attr('src') || $(el).find('img').attr('data-src');
         const href = $(el).find('a').attr('href');
@@ -231,8 +231,8 @@ class XHamsterSpider extends Spider {
       });
 
       // 提取上传者信息
-[2026/5/8 15:39] Leo openclaw qw:       const uploader = $('[data-role="uploader"], .video-uploader a, .username').text().trim();
-[2026/5/8 15:39] Leo openclaw qw: const uploaderUrl = $('[data-role="uploader"], .video-uploader a, .username').attr('href');
+ Leo openclaw qw:       const uploader = $('[data-role="uploader"], .video-uploader a, .username').text().trim();
+ Leo openclaw qw: const uploaderUrl = $('[data-role="uploader"], .video-uploader a, .username').attr('href');
 
       return {
         title: title,
